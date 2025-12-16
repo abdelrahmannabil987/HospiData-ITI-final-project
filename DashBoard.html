@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hospital Live Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-main: #020617;
+      --bg-card: #020617;
+      --bg-card-inner: #020617;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --chip-bg: #020617;
+      --chip-pill: #1d4ed8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 50%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .page-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #f9fafb;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    /* Top metrics */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .metric-card {
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 45%);
+      border-radius: 24px;
+      padding: 18px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 130px;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .metric-value {
+      font-size: 3rem;           
+      font-weight: 800;
+      color: #f9fafb;
+      margin-bottom: 4px;
+    }
+
+    .metric-sub {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    /* Panels */
+    .panels-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      background: radial-gradient(circle at top left, #020617 0, #020617 55%);
+      border-radius: 24px;
+      padding: 18px 20px 16px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.75);
+    }
+
+    .panel-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .panel-title small {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      font-weight: 400;
+    }
+
+    .stat-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* === BIGGER CHIPS HERE === */
+    .stat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 1.4rem;       
+      border-radius: 999px;
+      background: var(--chip-bg);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      min-width: 170px;
+      justify-content: space-between;
+    }
+
+    .chip-label {
+      font-size: 1rem;             
+      color: var(--text-main);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .chip-value {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      height: 40px;                
+      border-radius: 999px;
+      background: var(--chip-pill);
+      color: #f9fafb;
+      font-weight: 800;
+      font-size: 1.4rem;            
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 1024px) {
+      .metrics-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .panels-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+      .metric-card {
+        padding: 14px 16px;
+      }
+      .metric-value {
+        font-size: 2.4rem;
+      }
+      .stat-chip {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <h1>Hospital Live Dashboard</h1>
+      <p>Real-time overview of visits, admissions, occupancy & revenue</p>
+    </header>
+
+    <!-- Top metrics -->
+    <section class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-label">Visits Today</div>
+        <div class="metric-value" id="visitsToday">0</div>
+        <div class="metric-sub">Total visits registered since midnight</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Admissions Today</div>
+        <div class="metric-value" id="admissionsToday">0</div>
+        <div class="metric-sub">New inpatients admitted today</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Occupied Beds</div>
+        <div class="metric-value" id="occupiedBeds">0</div>
+        <div class="metric-sub">Current inpatients (active admissions)</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-label">Revenue Today (Paid)</div>
+        <div class="metric-value" id="revenueToday">0.00</div>
+        <div class="metric-sub">Sum of bills with status <strong>Paid</strong></div>
+      </div>
+    </section>
+
+    <!-- Middle panels -->
+    <section class="panels-grid">
+      <div class="panel">
+        <div class="panel-title">
+          <span>Visits Today by Classification</span>
+          <small>From <code>visits_today_by_classification</code></small>
+        </div>
+        <div class="stat-chip-row" id="visitsByClassification"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          <span>Waiting Now by Classification</span>
+          <small>From <code>waiting_now_by_classification</code></small>
+        </div>
+        <div class="stat-chip-row" id="waitingByClassification"></div>
+      </div>
+    </section>
+
+    <!-- Bottom panel -->
+    <section class="panels-grid">
+      <div class="panel">
+        <div class="panel-title">
+          <span>Waiting Now by Speciality</span>
+          <small>From <code>waiting_now_by_speciality</code></small>
+        </div>
+        <div class="stat-chip-row" id="waitingBySpeciality"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Last update: <span id="lastUpdate">–</span></span>
+    </footer>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:5000/stats";
+
+    function formatCurrency(value) {
+      if (value === null || value === undefined) return "0.00";
+      return Number(value).toLocaleString("en-EG", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+    }
+
+    function renderChipRow(containerId, dataObj) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = "";
+
+      if (!dataObj || typeof dataObj !== "object") return;
+
+      Object.entries(dataObj).forEach(([key, value]) => {
+        const chip = document.createElement("div");
+        chip.className = "stat-chip";
+
+        const label = document.createElement("span");
+        label.className = "chip-label";
+        label.textContent = key;
+
+        const number = document.createElement("span");
+        number.className = "chip-value";
+        number.textContent = value ?? 0;
+
+        chip.appendChild(label);
+        chip.appendChild(number);
+        container.appendChild(chip);
+      });
+    }
+
+    async function loadStats() {
+      try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+
+        // Top counters
+        document.getElementById("visitsToday").textContent =
+          data.visits_today_total ?? 0;
+
+        document.getElementById("admissionsToday").textContent =
+          data.admissions_today ?? 0;
+
+        document.getElementById("occupiedBeds").textContent =
+          data.inpatients_now ?? 0;
+
+        document.getElementById("revenueToday").textContent =
+          formatCurrency(data.revenue_paid_today);
+
+        // Chips
+        renderChipRow(
+          "visitsByClassification",
+          data.visits_today_by_classification
+        );
+        renderChipRow(
+          "waitingByClassification",
+          data.waiting_now_by_classification
+        );
+        renderChipRow(
+          "waitingBySpeciality",
+          data.waiting_now_by_speciality
+        );
+
+        // Last update
+        if (data.last_update) {
+          const dt = new Date(data.last_update);
+          document.getElementById("lastUpdate").textContent =
+            dt.toLocaleTimeString();
+        }
+      } catch (err) {
+        console.error("Error loading stats:", err);
+      }
+    }
+
+    loadStats();
+    setInterval(loadStats, 3000);
+  </script>
+</body>
+</html>
