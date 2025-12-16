@@ -1,0 +1,26 @@
+{
+  "name": "sqlserver-hospital-connector-v2",
+  "config": {
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "tasks.max": "1",
+
+    "database.hostname": "host.docker.internal",
+    "database.port": "1433",
+    "database.user": "debezium_user3",
+    "database.password": "StrongPass!123",
+    "database.names": "Hospital_Salam",
+
+    "database.encrypt": "false",
+    "database.trustServerCertificate": "true",
+
+    "topic.prefix": "hospital",
+
+    "table.include.list": "dbo.Visits,dbo.VisitStatusHistory,dbo.Admissions,dbo.Bills",
+
+    "snapshot.mode": "initial",
+    "include.schema.changes": "false",
+
+    "schema.history.internal.kafka.bootstrap.servers": "kafka1:29092",
+    "schema.history.internal.kafka.topic": "schema-changes.hospital.v2"
+  }
+}
