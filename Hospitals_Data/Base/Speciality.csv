@@ -1,0 +1,10 @@
+SpecialityID,SpecialityName,Location
+1,Emergency,Ground Floor
+2,Internal Medicine,1st Floor
+3,General Surgery,2nd Floor
+4,Orthopedics,2nd Floor
+5,Pediatrics,3rd Floor
+6,Cardiology,3rd Floor
+7,Radiology,Basement
+8,Laboratory,Basement
+9,ICU,1st Floor

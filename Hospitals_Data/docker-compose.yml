@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  jupyter-spark:
+    image: jupyter/pyspark-notebook:latest
+    container_name: jupyter-spark
+    ports:
+      - "8888:8888"    # Jupyter
+      - "4040:4040"    # Spark UI for the first app
+    environment:
+      # so you don't have to copy tokens from logs
+      JUPYTER_TOKEN: "hospital"
+      JUPYTER_ENABLE_LAB: "yes"
+    volumes:
+      # map a local folder to /home/jovyan/work inside the container
+      - ./work:/home/jovyan/work

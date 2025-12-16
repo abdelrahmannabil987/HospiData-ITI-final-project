@@ -1,0 +1,10 @@
+StatusID,StatusName
+1,Registered
+2,Waiting
+3,In Consultation
+4,Finished
+5,Admitted
+6,In Ward
+7,Discharged
+8,Cancelled
+9,No-Show

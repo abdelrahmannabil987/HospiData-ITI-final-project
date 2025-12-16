@@ -1,0 +1,14 @@
+BedID,BedNumber,WardID,BedType
+1,M-101,1,General
+2,M-102,1,General
+3,M-103,1,General
+4,S-201,2,Post-Operative
+5,S-202,2,Post-Operative
+6,S-203,2,Post-Operative
+7,O-301,3,Orthopedic
+8,O-302,3,Orthopedic
+9,P-401,4,Pediatric
+10,P-402,4,Pediatric
+11,IC-01,5,ICU
+12,IC-02,5,ICU
+13,IC-03,5,ICU

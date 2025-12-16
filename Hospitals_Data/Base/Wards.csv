@@ -1,0 +1,6 @@
+WardID,WardName,WardType,Location
+1,Medical Ward A,General Medicine,1st Floor
+2,Surgical Ward A,General Surgery,2nd Floor
+3,Orthopedic Ward,Orthopedics,2nd Floor
+4,Pediatrics Ward,Pediatrics,3rd Floor
+5,ICU Ward,ICU,1st Floor

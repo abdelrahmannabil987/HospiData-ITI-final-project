@@ -1,0 +1,19 @@
+ServiceID,ServiceName,Price,Description
+1,OPD Consultation - General Practitioner,150.00,Outpatient consultation with GP
+2,OPD Consultation - Specialist,250.00,Outpatient consultation with specialist
+3,Emergency Visit Fee,300.00,Emergency department consultation
+4,Inpatient Bed Day - General Ward,500.00,One day stay in general ward
+5,Inpatient Bed Day - ICU,1500.00,One day stay in intensive care unit
+6,Nursing Care / Vitals Check,80.00,Nursing check of vitals
+7,Injection Service,60.00,Injection administration
+8,Dressing / Wound Care,120.00,Dressing change or wound care
+9,Plaster / Cast Removal,150.00,Removal of cast
+10,X-Ray - Chest,200.00,Chest radiography
+11,X-Ray - Limb,180.00,Upper or lower limb radiography
+12,CT Scan - Brain,800.00,CT scan of brain
+13,Ultrasound - Abdomen,400.00,Abdominal ultrasound
+14,Lab Test - CBC,120.00,Complete blood count
+15,Lab Test - Liver Function,220.00,Liver function test panel
+16,Lab Test - Kidney Function,220.00,Kidney function test panel
+17,Surgery Package - Appendectomy,6000.00,Appendectomy surgery package
+18,Surgery Package - Hernia Repair,5500.00,Hernia repair surgery package

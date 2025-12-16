@@ -1,0 +1,22 @@
+EmergencyDetailID,VisitID,TriageLevelID,ChiefComplaint
+1,4,2,"Chest pain, shortness of breath"
+2,6,2,Head trauma after fall
+3,14,3,Abdominal pain and vomiting
+4,16,3,Leg fracture after road accident
+5,23,3,"High fever and dehydration"
+6,28,2,"Polytrauma after car accident"
+7,33,2,"Open leg fracture after workplace fall"
+8,40,4,"Mild abdominal pain and nausea"
+9,45,2,"Chest pain and shortness of breath"
+10,49,3,"Abdominal trauma after fall"
+11,55,2,"High fever and confusion"
+12,59,1,"Polytrauma after car accident"
+13,66,2,"Acute chest pain, rule out MI"
+14,72,3,"Head trauma after minor car accident"
+15,80,2,"Abdominal pain with vomiting"
+16,85,3,"High fever and productive cough"
+17,72,2,"Re-evaluation of trauma symptoms"
+18,59,1,"Multiple injuries after collision"
+19,94,2,"Road traffic accident with leg fracture"
+20,95,3,"Severe chest pain and shortness of breath"
+21,106,3,"Acute abdominal pain with vomiting"

@@ -1,0 +1,13 @@
+TypeID,TypeName,ClassificationID
+1,Initial Examination,2
+2,Follow-up Visit,2
+3,Post-Operation Follow-up,2
+4,Emergency Examination,3
+5,Trauma Emergency,3
+6,Pre-Operation Assessment,1
+7,Operation Session,1
+8,Post-Operation Round,1
+9,Injection,4
+10,Dressing / Wound Care,4
+11,Remove Cast,4
+12,Vitals Check,4

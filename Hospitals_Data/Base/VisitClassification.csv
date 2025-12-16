@@ -1,0 +1,5 @@
+ClassificationID,ClassificationName
+1,Inpatient
+2,Outpatient
+3,Emergency
+4,Ambulatory
